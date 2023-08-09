@@ -64,7 +64,7 @@ int main() {
 	}
 	fclose(fr);
 	fclose(fw);
-	printf("Counter dataset parsed");
+	printf("Counter dataset parsed\n");
 	
   fr=fopen("perf_metric.txt", "rb");
 	fw=fopen("dataset_metrics.csv", "wb");
