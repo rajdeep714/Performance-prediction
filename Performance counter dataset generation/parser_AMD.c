@@ -49,16 +49,16 @@ int main() {
 			fprintf(fw, "%s,%lld", bench[i], cycles);
 			fscanf(fr, "%*[^,],%lld%*[^\n] ", &v);
 			counter[0]+=v;
-      fprintf(fw, ",%lld", counter[0]);
+      			fprintf(fw, ",%lld", counter[0]);
 			fscanf(fr, "%*[^,],%lld%*[^\n] ", &v);
 			counter[1]+=v;
-      fprintf(fw, ",%lld", counter[1]);
+      			fprintf(fw, ",%lld", counter[1]);
 			fscanf(fr, "%*[^\n] ");
 			for(k=2; k<6; k++) {
-        fscanf(fr, "%*[^,],%lld%*[^\n] ", &v);
-			  counter[k]+=v;
-        fprintf(fw, ",%lld", counter[k]);
-      }
+        			fscanf(fr, "%*[^,],%lld%*[^\n] ", &v);
+				counter[k]+=v;
+        			fprintf(fw, ",%lld", counter[k]);
+      			}
 			fprintf(fw, "\n");
 		}
 	}
@@ -66,7 +66,7 @@ int main() {
 	fclose(fw);
 	printf("Counter dataset parsed\n");
 	
-  fr=fopen("perf_metric.txt", "rb");
+  	fr=fopen("perf_metric.txt", "rb");
 	fw=fopen("dataset_metrics.csv", "wb");
 	fprintf(fw, "workload,cycles,IpNReturn,IpMispredict,BpTkBranch\n");
 	for(i=0; i<23; i++) {         //benchmark
@@ -83,10 +83,10 @@ int main() {
 			fscanf(fr, "%*[^,],%lld%*[^\n] ", &v);
 			cycles+=v;
 			fprintf(fw, "%s,%lld", bench[i], cycles);
-      for(k=0; k<5; k++) {
-        fscanf(fr, "%*[^,],%lf%*[^\n] ", &v);
-			  counter[k]+=v;
-      }
+      			for(k=0; k<5; k++) {
+        			fscanf(fr, "%*[^,],%lf%*[^\n] ", &v);
+				counter[k]+=v;
+      			}
 			fprintf(fw, ",%.2lf", counter[0]/counter[1]);
 			fprintf(fw, ",%.2lf", counter[0]/counter[2]);
 			fprintf(fw, ",%.2lf", counter[4]/counter[3]);
