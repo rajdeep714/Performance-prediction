@@ -24,10 +24,10 @@ int main() {
 		"538.imagick_r",
 		"544.nab_r",
 		"549.fotonik3d_r",
-		"554.roms_r"
+		"554.roms_r",
 		"503.bwaves_r",
 		"521.wrf_r",
-		"527.cam4_r",
+		"527.cam4_r"
 	};
 	int i, j, k;
 	fr=fopen("perf_counter.txt", "rb");
@@ -48,19 +48,19 @@ int main() {
 			cycles+=v;
 			fprintf(fw, "%s,%lld", bench[i], cycles);
 			for(k=0; k<6; k++) {
-        fscanf(fr, "%*[^,],%lld%*[^\n] ", &v);
-			  counter[0]+=v;
-        fprintf(fw, ",%lld", counter[k]);
-      }
+        			fscanf(fr, "%*[^,],%lld%*[^\n] ", &v);
+			  	counter[k]+=v;
+        			fprintf(fw, ",%lld", counter[k]);
+      			}
 			fprintf(fw, "\n");
 		}
 	}
 	fclose(fr);
 	fclose(fw);
-	printf("Counter dataset parsed");
+	printf("Counter dataset parsed\n");
 
 	fr=fopen("perf_metric.txt", "rb");
-  fw=fopen("dataset_metrics.csv", "wb");
+  	fw=fopen("dataset_metrics.csv", "wb");
 	fprintf(fw, "workload,cycles,IpCall,IpLoad,IpMispredict,BpTkBranch,MLP\n");
 	for(i=0; i<23; i++) {         //benchmark
 		fscanf(fr, "%*[^\n] ");
@@ -76,10 +76,10 @@ int main() {
 			fscanf(fr, "%*[^,],%lld%*[^\n] ", &v);
 			cycles+=v;
 			fprintf(fw, "%s,%lld", bench[i], cycles);
-      for(k=0; k<8; k++) {
-	  		fscanf(fr, "%*[^,],%lf%*[^\n] ", &v);
-  			counter[0]+=v;
-      }
+     			 for(k=0; k<8; k++) {
+	  			fscanf(fr, "%*[^,],%lf%*[^\n] ", &v);
+  				counter[k]+=v;
+      			}
 			fprintf(fw, ",%.2lf", counter[0]/counter[1]);
 			fprintf(fw, ",%.2lf", counter[0]/counter[2]);
 			fprintf(fw, ",%.2lf", counter[0]/counter[3]);
