@@ -10,6 +10,7 @@ do
     specmake
     cd ../../run/run_peak_refrate_perfcount-m64.0000/
     cp ../../build/build_peak_perfcount-m64.0000/${execlist[$i]} .
+    chmod +x perfrun.sh
     i=`expr $i + 1`
     cd ../../..
 done
@@ -23,6 +24,7 @@ do
     specmake TARGET=${execlist[$i]}
     cd ../../run/run_peak_refrate_perfcount-m64.0000/
     cp ../../build/build_peak_perfcount-m64.0000/${execlist[$i]} .
+    chmod +x perfrun.sh
     i=`expr $i + 1`
     cd ../../..
 done
@@ -32,6 +34,7 @@ specmake clean
 specmake
 cd ../../run/run_base_refrate_perfcount-m64.0000/
 cp ../../build/build_base_perfcount-m64.0000/bwaves_r .
+chmod +x perfrun.sh
 cd ../../..
 
 execlist=(wrf_r cam4_r)
@@ -43,6 +46,7 @@ do
     specmake TARGET=${execlist[$i]}
     cd ../../run/run_base_refrate_perfcount-m64.0000/
     cp ../../build/build_base_perfcount-m64.0000/${execlist[$i]} .
+    chmod +x perfrun.sh
     i=`expr $i + 1`
     cd ../../..
 done
