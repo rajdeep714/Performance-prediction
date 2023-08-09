@@ -12,5 +12,5 @@ done
 for bench in 503.bwaves_r 521.wrf_r 527.cam4_r
 do
 	echo $bench
-	sudo perf stat -I 2000 -o perf.txt -r $repetition -x, -e cycles,cache-misses,instructions,cycle_activity.stalls_total,branch-misses,context-switches,iTLB-load-misses ./$bench/run/run_base_refrate_perfcount-m64.0000/perfrun.sh $runtime
+	sudo perf stat -I 2000 -o perf.txt --append -r $repetition -x, -e cycles,cache-misses,instructions,cycle_activity.stalls_total,branch-misses,context-switches,iTLB-load-misses ./$bench/run/run_base_refrate_perfcount-m64.0000/perfrun.sh $runtime
 done
